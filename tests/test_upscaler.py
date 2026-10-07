@@ -21,6 +21,7 @@ class UpscalerContractTests(unittest.TestCase):
         host = types.ModuleType("modules")
         host.shared = cls.shared
         host.script_callbacks = types.SimpleNamespace(on_before_ui=cls.callbacks.append)
+        host.scripts = types.SimpleNamespace(Script=type("Script", (), {}), AlwaysVisible=object())
         host.upscaler = types.SimpleNamespace(
             Upscaler=type("Upscaler", (), {"__init__": lambda self: None}),
             UpscalerData=lambda name, path, upscaler, scale: types.SimpleNamespace(
